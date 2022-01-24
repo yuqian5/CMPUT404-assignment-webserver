@@ -34,3 +34,12 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# venv
+venv
+
+# pycharm
+.idea
+
+# mcos
+.DS_Store
