@@ -3,7 +3,7 @@ import socketserver
 from pathlib import Path
 import os
 
-# Copyright 2013 Abram Hindle, Eddie Antonio Santos
+# Copyright 2013 Abram Hindle, Eddie Antonio Santos, Yuqian Cao
 # 
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -27,24 +27,6 @@ import os
 # run: python freetests.py
 
 # try: curl -v -X GET http://127.0.0.1:8080/
-
-'''
- <one line to give the program's name and a brief idea of what it does.>
-    Copyright (C) <2022>  <Yuqian Cao>
-
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-'''
 
 
 def get_http_header_request_dir(request):
@@ -95,13 +77,13 @@ class MyWebServer(socketserver.BaseRequestHandler):
     def handle(self):
         self.data = self.request.recv(1024).strip()
 
-        # print("******************************************************")
-        # print(self.data)
+        print("******************************************************")
+        print(self.data)
         http_request = self.parse_http_request(self.data)
 
-        # for i in http_request:
-        #     print(i, http_request[i])
-        # print("******************************************************")
+        for i in http_request:
+            print(i, http_request[i])
+        print("******************************************************")
 
         if http_request["method"] == "GET":
             exist, fd, content_type, dir_type = self.check_if_file_exist(http_request["dir"])
